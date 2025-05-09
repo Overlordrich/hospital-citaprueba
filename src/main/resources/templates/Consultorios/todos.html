@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Consultorios</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<h1 class="mb-4">Consultorios</h1>
+<a href="/Medicos/nuevoMedico" class="btn btn-info mt-3 ">Agregar Medicos</a>
+<a href="/pacientes/nuevoPaciente" class="btn btn-info mt-3 ">Agregar Pacientes</a>
+<a href="/consultorios/nuevo" class="btn btn-info mt-3">Agregar Consultorio</a>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Número de Consultorio</th>
+    <th>Piso</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="consultorio : ${consultorios}">
+    <td th:text="${consultorio.id}"></td>
+    <td th:text="${consultorio.numeroConsultorio}"></td>
+    <td th:text="${consultorio.piso}"></td>
+    <td>
+      <a th:href="@{/consultorios/eliminar/{id}(id=${consultorio.id})}" class="btn btn-danger btn-sm"
+         onclick="return confirm('¿Estás seguro de eliminar este consultorio?');">
+        Eliminar
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

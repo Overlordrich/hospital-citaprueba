@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pacientes</title>
+</head>
+<body>
+<h1>Lista de Pacientes</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="paciente : ${pacientes}">
+        <td th:text="${paciente.id}"></td>
+        <td th:text="${paciente.nombre}"></td>
+        <td th:text="${paciente.apellidoP}"></td>
+        <td th:text="${paciente.apellidoM}"></td>
+        <td>
+            <a th:href="@{/pacientes/eliminar/{id}(id=${paciente.id})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/pacientes/nuevo">Agregar Nuevo Paciente</a>
+</body>
+</html>
